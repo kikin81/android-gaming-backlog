@@ -1,0 +1,15 @@
+# Building upon default config
+# Only include rule modifications in this file
+# For default rules see:
+# https://github.com/detekt/detekt/blob/master/detekt-core/src/main/resources/default-detekt-config.yml
+
+naming:
+  active: true
+  ClassNaming:
+    active: true
+    excludes: &generatedFiles
+      - "**/build/generated/**"
+  FunctionNaming:
+    active: true
+    excludes: *generatedFiles
+    ignoreAnnotated: ["Composable"]

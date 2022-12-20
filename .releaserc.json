@@ -1,0 +1,16 @@
+{
+  "branches": ["main", "next"],
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    "@semantic-release/github",
+    "gradle-semantic-release-plugin",
+    [
+      "semantic-release-github-pullrequest",
+      {
+        "assets": ["package.json", "README.md", "gradle.properties"],
+        "baseRef": "main"
+      }
+    ]
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "android-gaming-backlog",
+  "description": "Android app to track your gaming backlog",
+  "main": "index.js",
+  "scripts": {
+    "release": "semantic-release"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kikin81/android-gaming-backlog.git"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/kikin81/android-gaming-backlog/issues"
+  },
+  "homepage": "https://github.com/kikin81/android-gaming-backlog#readme",
+  "dependencies": {
+    "semantic-release-github-pullrequest": "^1.3.0",
+    "gradle-semantic-release-plugin": "^1.6.6",
+    "semantic-release": "^19.0.2"
+  }
+}
