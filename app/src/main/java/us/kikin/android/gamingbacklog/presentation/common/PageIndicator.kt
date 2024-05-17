@@ -11,7 +11,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import us.kikin.android.gamingbacklog.ui.theme.AppTheme
 
 @Composable
 fun PageIndicator(
@@ -19,7 +21,7 @@ fun PageIndicator(
     selectedPage: Int,
     modifier: Modifier = Modifier,
     selectedColor: Color = MaterialTheme.colorScheme.primary,
-    unselectedColor: Color = Color.Blue
+    unselectedColor: Color =  MaterialTheme.colorScheme.secondary
 ) {
     Row(
         modifier = modifier,
@@ -35,5 +37,13 @@ fun PageIndicator(
                     )
             )
         }
+    }
+}
+
+@Composable
+@Preview(showBackground = true)
+internal fun PageIndicatorPreview() {
+    AppTheme {
+        PageIndicator(pageSize = 4, selectedPage = 2)
     }
 }
