@@ -1,4 +1,4 @@
-package com.kikin.app.gamingbacklog.ui.theme
+package us.kikin.android.gamingbacklog.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

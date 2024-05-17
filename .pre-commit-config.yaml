@@ -3,19 +3,19 @@ exclude: "^\
   "
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.4.0 # Use the ref you want to point at
+    rev: v4.6.0 # Use the ref you want to point at
     hooks:
       - id: check-json
       - id: check-yaml
       - id: end-of-file-fixer
       - id: trailing-whitespace
   - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: v3.0.0-alpha.4
+    rev: v3.1.0
     hooks:
       - id: prettier
         stages: [commit]
   - repo: https://github.com/alessandrojcm/commitlint-pre-commit-hook
-    rev: v9.3.0
+    rev: v9.16.0
     hooks:
       - id: commitlint
         stages: [commit-msg]
@@ -25,6 +25,10 @@ repos:
     hooks:
       - id: shellcheck
       - id: shfmt
+  - repo: https://github.com/rhysd/actionlint
+    rev: v1.7.0
+    hooks:
+      - id: actionlint
   - repo: https://github.com/jguttman94/pre-commit-gradle
     rev: v0.3.0
     hooks:

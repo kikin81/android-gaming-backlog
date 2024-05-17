@@ -1,21 +1,16 @@
 pluginManagement {
     repositories {
-        google()
+        google {
+            content {
+                includeGroupByRegex("com\\.android.*")
+                includeGroupByRegex("com\\.google.*")
+                includeGroupByRegex("androidx.*")
+            }
+        }
         mavenCentral()
         gradlePluginPortal()
     }
 }
-
-plugins {
-    id 'de.fayard.refreshVersions' version '0.51.0'
-}
-
-refreshVersions {
-    rejectVersionIf {
-        candidate.stabilityLevel.isLessStableThan(current.stabilityLevel)
-    }
-}
-
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
@@ -25,4 +20,4 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "GamingBacklog"
-include ':app'
+include(":app")
