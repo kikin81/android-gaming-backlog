@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.material3.MaterialTheme
@@ -19,6 +20,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import us.kikin.android.gamingbacklog.domain.usecase.AppEntryUseCases
 import us.kikin.android.gamingbacklog.presentation.onboarding.OnboardingScreen
+import us.kikin.android.gamingbacklog.presentation.onboarding.OnboardingViewModel
 import us.kikin.android.gamingbacklog.ui.theme.AppTheme
 import javax.inject.Inject
 
@@ -27,6 +29,8 @@ class MainActivity : ComponentActivity() {
 
     @Inject
     lateinit var appEntryUseCases: AppEntryUseCases
+
+    private val onboardingViewModel: OnboardingViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,7 +45,11 @@ class MainActivity : ComponentActivity() {
         setContent {
             AppTheme {
                 Box(modifier = Modifier.background(color = MaterialTheme.colorScheme.background)) {
-                    OnboardingScreen()
+                    OnboardingScreen(
+                        event = { event ->
+                            onboardingViewModel.onEvent(event)
+                        }
+                    )
                 }
             }
         }

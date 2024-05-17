@@ -30,7 +30,8 @@ import us.kikin.android.gamingbacklog.ui.theme.AppTheme
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun OnboardingScreen(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    event: (OnboardingEvent) -> Unit,
 ) {
     Column(modifier = modifier.fillMaxSize()) {
         val pagerState = rememberPagerState(initialPage = 0) {
@@ -79,6 +80,9 @@ fun OnboardingScreen(
                 }
                 PrimaryButton(text = buttonState.value[1],
                     onClick = {
+                        if (pagerState.currentPage == pages.size - 1) {
+                            event(OnboardingEvent.SaveAppEntry)
+                        }
                         scope.launch { pagerState.animateScrollToPage(pagerState.currentPage + 1) }
                     })
             }
@@ -91,6 +95,6 @@ fun OnboardingScreen(
 @Preview(showBackground = true)
 internal fun OnboardingScreenPreview() {
     AppTheme {
-        OnboardingScreen()
+        OnboardingScreen(event = {})
     }
 }
