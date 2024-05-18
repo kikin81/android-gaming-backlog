@@ -9,6 +9,10 @@ plugins {
     alias(libs.plugins.ktlint)
 }
 
+secrets {
+    defaultPropertiesFileName = "local.defaults.properties"
+}
+
 android {
     namespace = "us.kikin.android.gamingbacklog"
     compileSdk = 34
