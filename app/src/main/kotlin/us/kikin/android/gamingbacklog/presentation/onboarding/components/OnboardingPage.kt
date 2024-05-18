@@ -27,28 +27,29 @@ fun OnboardingPage(
 ) {
     Column(
         modifier = modifier,
-        verticalArrangement = Arrangement.spacedBy(8.dp)
+        verticalArrangement = Arrangement.spacedBy(8.dp),
     ) {
         Image(
             painter = painterResource(id = page.imageRes),
             contentDescription = null,
-            modifier = Modifier
-                .fillMaxWidth()
-                .fillMaxHeight(fraction = 0.6f),
-            contentScale = ContentScale.Crop
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .fillMaxHeight(fraction = 0.6f),
+            contentScale = ContentScale.Crop,
         )
         Spacer(modifier = Modifier.height(16.dp))
         Text(
             text = page.title,
             style = MaterialTheme.typography.displaySmall,
             modifier = Modifier.padding(horizontal = 32.dp),
-            color = MaterialTheme.colorScheme.onSurface
+            color = MaterialTheme.colorScheme.onSurface,
         )
         Text(
             text = page.description,
             style = MaterialTheme.typography.bodyMedium,
             modifier = Modifier.padding(horizontal = 32.dp),
-            color = MaterialTheme.colorScheme.onSurface
+            color = MaterialTheme.colorScheme.onSurface,
         )
     }
 }
@@ -58,11 +59,12 @@ fun OnboardingPage(
 internal fun OnboardingPagePreview() {
     AppTheme {
         OnboardingPage(
-            page = Page(
-                title = "Welcome to Gaming Backlog",
-                description = "Keep track of your video game backlog",
-                imageRes = R.drawable.onboarding1
-            )
+            page =
+                Page(
+                    title = "Welcome to Gaming Backlog",
+                    description = "Keep track of your video game backlog",
+                    imageRes = R.drawable.onboarding1,
+                ),
         )
     }
 }

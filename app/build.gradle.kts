@@ -5,6 +5,8 @@ plugins {
     alias(libs.plugins.sortDependencies)
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt)
+    alias(libs.plugins.secrets)
+    alias(libs.plugins.ktlint)
 }
 
 android {
@@ -29,7 +31,7 @@ android {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
         }
     }
@@ -42,6 +44,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.14"
@@ -55,10 +58,14 @@ android {
 
 dependencies {
     ksp(libs.hilt.compiler)
+    ksp(libs.moshi.codegen)
+
+    ktlintRuleset(libs.ktlint.compose.rules)
 
     lintChecks(libs.slack.compose.lint)
 
     implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.accompanist.placeholder)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.core.splashscreen)
@@ -66,18 +73,24 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.paging.compose)
+    implementation(libs.androidx.paging.runtime)
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.text.google.fonts)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.hilt)
     implementation(libs.hilt.navigation)
+    implementation(libs.igdb.api)
+    implementation(libs.moshi)
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.moshi)
 
     debugImplementation(libs.androidx.ui.test.manifest)
     debugImplementation(libs.androidx.ui.tooling)
 
-    testImplementation(libs.junit)
     testImplementation(libs.androidx.navigation.testing)
+    testImplementation(libs.junit)
 
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.espresso.core)

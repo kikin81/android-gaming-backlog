@@ -2,7 +2,6 @@ package us.kikin.android.gamingbacklog.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-
 val primaryLight = Color(0xFF32628D)
 val onPrimaryLight = Color(0xFFFFFFFF)
 val primaryContainerLight = Color(0xFFCFE5FF)

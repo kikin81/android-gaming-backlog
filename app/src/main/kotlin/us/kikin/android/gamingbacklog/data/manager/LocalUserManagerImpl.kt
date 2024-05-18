@@ -12,11 +12,9 @@ import us.kikin.android.gamingbacklog.domain.manager.LocalUserManager
 import us.kikin.android.gamingbacklog.utils.Constants
 import us.kikin.android.gamingbacklog.utils.Constants.USER_SETTINGS
 
-
 class LocalUserManagerImpl(
-    private val context: Context
+    private val context: Context,
 ) : LocalUserManager {
-
     override suspend fun saveAppEntry() {
         context.dataStore.edit { settings ->
             settings[PreferencesKeys.APP_ENTRY] = true

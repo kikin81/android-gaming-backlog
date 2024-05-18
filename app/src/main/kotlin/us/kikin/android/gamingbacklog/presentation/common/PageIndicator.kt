@@ -21,20 +21,21 @@ fun PageIndicator(
     selectedPage: Int,
     modifier: Modifier = Modifier,
     selectedColor: Color = MaterialTheme.colorScheme.primary,
-    unselectedColor: Color =  MaterialTheme.colorScheme.secondary
+    unselectedColor: Color = MaterialTheme.colorScheme.secondary,
 ) {
     Row(
         modifier = modifier,
-        horizontalArrangement = Arrangement.SpaceBetween
+        horizontalArrangement = Arrangement.SpaceBetween,
     ) {
         repeat(pageSize) { page ->
             Box(
-                modifier = Modifier
-                    .size(14.dp)
-                    .clip(CircleShape)
-                    .background(
-                        if (page == selectedPage) selectedColor else unselectedColor
-                    )
+                modifier =
+                    Modifier
+                        .size(14.dp)
+                        .clip(CircleShape)
+                        .background(
+                            if (page == selectedPage) selectedColor else unselectedColor,
+                        ),
             )
         }
     }
