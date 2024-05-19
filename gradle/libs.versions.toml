@@ -12,6 +12,9 @@ hilt = "2.51.1"
 hilt-navigation = "1.2.0"
 ksp = "1.9.24-1.0.20"
 navigation = "2.7.7"
+moshi = "1.15.1"
+retrofit = "2.11.0"
+paging = "3.3.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -35,14 +38,26 @@ androidx-datastore-preferences = { group = "androidx.datastore", name = "datasto
 hilt = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-navigation = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hilt-navigation" }
 hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
-# androidx.navigation:navigation-compose:$nav_version
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigation" }
 androidx-navigation-testing = { group = "androidx.navigation", name = "navigation-testing", version.ref = "navigation" }
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+retrofit-moshi = { group = "com.squareup.retrofit2", name = "converter-moshi", version.ref = "retrofit" }
+moshi = { group = "com.squareup.moshi", name = "moshi-kotlin", version.ref = "moshi" }
+moshi-codegen = { group = "com.squareup.moshi", name = "moshi-kotlin-codegen", version.ref = "moshi" }
+androidx-paging-runtime = { group = "androidx.paging", name = "paging-runtime", version.ref = "paging" }
+androidx-paging-compose = { group = "androidx.paging", name = "paging-compose", version.ref = "paging" }
+igdb-api = { group = "io.github.husnjak", name = "igdb-api-jvm", version = "1.1.0" }
+accompanist-placeholder = { group = "com.google.accompanist", name = "accompanist-placeholder-material", version = "0.30.1" }
+ktlint-compose-rules = { group = "io.nlopez.compose.rules", name = "ktlint", version = "0.4.1" }
+coil-compose = { group = "io.coil-kt", name = "coil-compose", version = "2.6.0" }
+collections-immutable = { group = "org.jetbrains.kotlinx", name = "kotlinx-collections-immutable", version = "0.3.7" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version = "1.23.6" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
-sortDependencies = { id = "com.squareup.sort-dependencies", version = "0.6"}
+sortDependencies = { id = "com.squareup.sort-dependencies", version = "0.6" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+secrets = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version = "2.0.1" }
+ktlint = { id = "org.jlleitschuh.gradle.ktlint", version = "12.1.1" }

@@ -1,0 +1,31 @@
+name: Build debug apk
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: "zulu"
+          java-version: "17"
+
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v3
+
+      - name: Set up local.properties
+        run: echo 'API_KEY=${{ secrets.API_KEY }}' > ./local.properties
+      - run: echo 'SERVER_URL=${{ secrets.SERVER_URL }}' > ./local.properties
+
+      - name: Build with Gradle
+        run: ./gradlew app:assembleDebug

@@ -34,21 +34,23 @@ fun OnboardingScreen(
     event: (OnboardingEvent) -> Unit,
 ) {
     Column(modifier = modifier.fillMaxSize()) {
-        val pagerState = rememberPagerState(initialPage = 0) {
-            pages.size
-        }
+        val pagerState =
+            rememberPagerState(initialPage = 0) {
+                pages.size
+            }
 
-        val buttonState = remember {
-            derivedStateOf {
-                when (pagerState.currentPage) {
-                    0 -> listOf("", "Next")
-                    1 -> listOf("Back", "Next")
-                    2 -> listOf("Back", "Next")
-                    3 -> listOf("Back", "Get Started")
-                    else -> listOf("", "")
+        val buttonState =
+            remember {
+                derivedStateOf {
+                    when (pagerState.currentPage) {
+                        0 -> listOf("", "Next")
+                        1 -> listOf("Back", "Next")
+                        2 -> listOf("Back", "Next")
+                        3 -> listOf("Back", "Get Started")
+                        else -> listOf("", "")
+                    }
                 }
             }
-        }
 
         HorizontalPager(state = pagerState) { index ->
             OnboardingPage(page = pages[index])
@@ -57,34 +59,39 @@ fun OnboardingScreen(
         Spacer(modifier = Modifier.weight(1f))
 
         Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp)
-                .navigationBarsPadding(),
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp)
+                    .navigationBarsPadding(),
             horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically,
         ) {
             PageIndicator(
                 modifier = Modifier.width(68.dp),
                 pageSize = pages.size,
-                selectedPage = pagerState.currentPage
+                selectedPage = pagerState.currentPage,
             )
 
             Row(verticalAlignment = Alignment.CenterVertically) {
                 val scope = rememberCoroutineScope()
                 if (buttonState.value[0].isNotEmpty()) {
-                    GhostButton(text = buttonState.value[0],
+                    GhostButton(
+                        text = buttonState.value[0],
                         onClick = {
                             scope.launch { pagerState.animateScrollToPage(pagerState.currentPage - 1) }
-                        })
+                        },
+                    )
                 }
-                PrimaryButton(text = buttonState.value[1],
+                PrimaryButton(
+                    text = buttonState.value[1],
                     onClick = {
                         if (pagerState.currentPage == pages.size - 1) {
                             event(OnboardingEvent.SaveAppEntry)
                         }
                         scope.launch { pagerState.animateScrollToPage(pagerState.currentPage + 1) }
-                    })
+                    },
+                )
             }
         }
         Spacer(modifier = Modifier.weight(0.5f))

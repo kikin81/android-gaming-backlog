@@ -13,15 +13,13 @@ import us.kikin.android.gamingbacklog.presentation.onboarding.OnboardingViewMode
 
 @SuppressLint("ComposeViewModelInjection", "ComposeModifierMissing")
 @Composable
-fun NavGraph(
-    startDestination: String
-) {
+fun NavGraph(startDestination: String) {
     val navController = rememberNavController()
 
     NavHost(navController = navController, startDestination = startDestination) {
         navigation(
             route = Route.AppStartNavigation.route,
-            startDestination = Route.OnboardingScreen.route
+            startDestination = Route.OnboardingScreen.route,
         ) {
             composable(route = Route.OnboardingScreen.route) {
                 val viewModel = hiltViewModel<OnboardingViewModel>()
@@ -30,7 +28,7 @@ fun NavGraph(
         }
         navigation(
             route = Route.GamesNavigation.route,
-            startDestination = Route.GamesNavigatorScreen.route
+            startDestination = Route.GamesNavigatorScreen.route,
         ) {
             composable(route = Route.GamesNavigatorScreen.route) {
                 // TODO: add games screen
