@@ -27,10 +27,10 @@ class MainViewModel
 
         init {
             appEntryUseCases.readAppEntry().onEach { shouldStartFromHomeScreen ->
-                if (shouldStartFromHomeScreen) {
-                    startDestination = Route.GamesNavigation.route
+                startDestination = if (shouldStartFromHomeScreen) {
+                    Route.GamesNavigation.route
                 } else {
-                    startDestination = Route.AppStartNavigation.route
+                    Route.AppStartNavigation.route
                 }
                 delay(300)
                 splashCondition = false

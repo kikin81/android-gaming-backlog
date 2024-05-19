@@ -10,6 +10,7 @@ import androidx.compose.ui.unit.dp
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import proto.Game
+import us.kikin.android.gamingbacklog.R
 import us.kikin.android.gamingbacklog.ui.theme.AppTheme
 
 @Composable
@@ -28,6 +29,7 @@ fun GamesList(
                 games[it]?.let { game ->
                     GameCard(
                         game = game,
+                        imageId = R.drawable.witcher,
                         onClick = { onClick(game) },
                     )
                 }

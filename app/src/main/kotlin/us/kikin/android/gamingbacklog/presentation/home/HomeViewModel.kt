@@ -8,10 +8,8 @@ import us.kikin.android.gamingbacklog.domain.usecase.games.GamesUseCase
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel
-    @Inject
-    constructor(
-        private val gamesUseCase: GamesUseCase,
-    ) : ViewModel() {
-        val games = gamesUseCase.getGames().cachedIn(viewModelScope)
-    }
+class HomeViewModel @Inject constructor(
+    private val gamesUseCase: GamesUseCase,
+) : ViewModel() {
+    val games = gamesUseCase.getGames().cachedIn(viewModelScope)
+}

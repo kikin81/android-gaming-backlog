@@ -83,6 +83,8 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.text.google.fonts)
     implementation(libs.androidx.ui.tooling.preview)
+    implementation(libs.coil.compose)
+    implementation(libs.collections.immutable)
     implementation(libs.hilt)
     implementation(libs.hilt.navigation)
     implementation(libs.igdb.api)
