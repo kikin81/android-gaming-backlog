@@ -31,6 +31,7 @@ fun GamesList(
                         game = game,
                         imageId = R.drawable.witcher,
                         onClick = { onClick(game) },
+                        isLoading = false,
                     )
                 }
             }
