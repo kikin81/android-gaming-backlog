@@ -7,7 +7,11 @@ plugins {
     alias(libs.plugins.hilt)
     alias(libs.plugins.secrets)
     alias(libs.plugins.ktlint)
+    alias(libs.plugins.compose.compiler)
+    kotlin(libs.plugins.kotlin.serialization.get().pluginId)
 }
+
+
 
 secrets {
     defaultPropertiesFileName = "local.defaults.properties"
@@ -50,9 +54,6 @@ android {
         compose = true
         buildConfig = true
     }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.14"
-    }
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
@@ -88,6 +89,7 @@ dependencies {
     implementation(libs.hilt)
     implementation(libs.hilt.navigation)
     implementation(libs.igdb.api)
+    implementation(libs.kotlinx.serialization)
     implementation(libs.moshi)
     implementation(libs.retrofit)
     implementation(libs.retrofit.moshi)

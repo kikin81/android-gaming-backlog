@@ -11,7 +11,6 @@ import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
 import androidx.paging.compose.collectAsLazyPagingItems
 import us.kikin.android.gamingbacklog.presentation.home.HomeScreen
@@ -21,39 +20,29 @@ import us.kikin.android.gamingbacklog.presentation.onboarding.OnboardingViewMode
 
 @SuppressLint("ComposeViewModelInjection", "ComposeModifierMissing")
 @Composable
-fun NavGraph(startDestination: String) {
+fun NavGraph(startDestination: Route) {
     val navController = rememberNavController()
 
     NavHost(navController = navController, startDestination = startDestination) {
-        navigation(
-            route = Route.AppStartNavigation.route,
-            startDestination = Route.OnboardingScreen.route,
-        ) {
-            composable(route = Route.OnboardingScreen.route) {
-                val viewModel = hiltViewModel<OnboardingViewModel>()
-                OnboardingScreen(event = viewModel::onEvent)
-            }
+        composable<Route.OnboardingScreen> {
+            val viewModel = hiltViewModel<OnboardingViewModel>()
+            OnboardingScreen(event = viewModel::onEvent)
         }
-        navigation(
-            route = Route.GamesNavigation.route,
-            startDestination = Route.GamesNavigatorScreen.route,
-        ) {
-            composable(route = Route.GamesNavigatorScreen.route) {
-                // TODO: add games screen
-                val viewModel = hiltViewModel<HomeViewModel>()
-                val snackbarHostState = remember { SnackbarHostState() }
-                Scaffold(
-                    snackbarHost = {
-                        SnackbarHost(snackbarHostState)
-                    },
-                ) { paddingValues ->
-                    HomeScreen(
-                        pagingItems = viewModel.games.collectAsLazyPagingItems(),
-                        navigate = { navController.navigate(it) },
-                        snackbarHostState = snackbarHostState,
-                        modifier = Modifier.padding(paddingValues),
-                    )
-                }
+        composable<Route.Home> {
+            // TODO: add games screen
+            val viewModel = hiltViewModel<HomeViewModel>()
+            val snackbarHostState = remember { SnackbarHostState() }
+            Scaffold(
+                snackbarHost = {
+                    SnackbarHost(snackbarHostState)
+                },
+            ) { paddingValues ->
+                HomeScreen(
+                    pagingItems = viewModel.games.collectAsLazyPagingItems(),
+                    navigate = { navController.navigate(it) },
+                    snackbarHostState = snackbarHostState,
+                    modifier = Modifier.padding(paddingValues),
+                )
             }
         }
     }

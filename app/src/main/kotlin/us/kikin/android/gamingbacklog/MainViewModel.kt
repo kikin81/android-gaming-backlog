@@ -22,16 +22,15 @@ class MainViewModel
         var splashCondition by mutableStateOf(true)
             private set
 
-        var startDestination by mutableStateOf(Route.AppStartNavigation.route)
+        var startDestination by mutableStateOf(Route.Home as Route)
             private set
 
         init {
             appEntryUseCases.readAppEntry().onEach { shouldStartFromHomeScreen ->
-                startDestination =
-                    if (shouldStartFromHomeScreen) {
-                        Route.GamesNavigation.route
+                startDestination = if (shouldStartFromHomeScreen) {
+                        Route.Home
                     } else {
-                        Route.AppStartNavigation.route
+                        Route.OnboardingScreen
                     }
                 delay(300)
                 splashCondition = false
